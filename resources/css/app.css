@@ -41,7 +41,7 @@ button {
 }
 
 .filterAndSearch {
-    @apply xl:flex justify-between;
+    @apply xl:flex justify-between m-2;
 }
 
 .sortBy {
@@ -90,7 +90,7 @@ button {
 
 .pageBox,
 .searchBox {
-    @apply bg-transparent px-4 py-2 text-white border-b placeholder-white;
+    @apply w-64 bg-transparent px-4 py-2 text-white border-b placeholder-white;
 }
 
 .current-page {
@@ -150,7 +150,7 @@ button {
 }
 
 .profile-center {
-    @apply flex flex-col items-center border-2 p-4 rounded-full;
+    @apply flex flex-col items-center border-2 m-4 rounded-full;
 }
 
 .pokemon-identity {
@@ -158,7 +158,7 @@ button {
 }
 
 .pokemon-stats {
-    @apply px-4 w-full;
+    @apply mb-2 xl:mb-0 pl-4;
 }
 
 .stats-container {
@@ -171,9 +171,6 @@ button {
 
 .pokemon-type {
     @apply rounded-full text-center px-2 py-1 font-bold mr-2 my-1 w-36;
-}
-
-.pokemon-type:nth-child(2) {
 }
 
 .pokemon-table {

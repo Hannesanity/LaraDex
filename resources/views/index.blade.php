@@ -22,8 +22,8 @@
             <div class="sortBy">
                 <label for="pokeSearch">Sort by:</label>
                 <select name="pokeSearch" id="pokeSearch" class="pokeSearch">
-                    <option value="lowestNumber">Lowest Number (First)</option>
-                    <option value="highestNumber">Highest Number (First)</option>
+                    <option value="lowestNumber">Lowest Number</option>
+                    <option value="highestNumber">Highest Number</option>
                     <option value="alphabeticalAsc">A - Z</option>
                     <option value="alphabeticalDesc">Z - A</option>
                 </select>
