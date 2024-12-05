@@ -40,13 +40,21 @@ class PokemonController extends Controller
         $pokemonDetails = [];
 
         $normalizeName = function ($name) {
+            $forms = ['Mega', 'Gigantamax', 'Alola', 'Galar', 'Hisui', 'Regional', 'Gmax', 'Eternal', 'Totem', 'Crowned'];
+        
             $name = ucwords(str_replace('-', ' ', $name));
-            if (stripos($name, 'Mega') !== false) {
-                $name = str_ireplace('Mega', '', $name);
-                $name = 'Mega ' . trim($name);
-            };
+        
+            foreach ($forms as $form) {
+                if (stripos($name, $form) !== false) {
+                    $name = str_ireplace($form, '', $name);
+                    $name = $form . ' ' . trim($name);
+                    break;
+                }
+            }
+        
             return $name;
         };
+        
 
         foreach ($pokemonListPerPage as $pokemon){
             $pokeDetails = Http::get($pokemon['url'])->json();
