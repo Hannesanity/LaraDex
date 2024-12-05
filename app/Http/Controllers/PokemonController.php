@@ -13,13 +13,8 @@ class PokemonController extends Controller
     
     public function index(Request $request) {
         
-        $cacheKey = "pokemon_list";
-
-        $pokemonLists = Cache::remember($cacheKey, now()->addMinutes(30), function () {
-            $response = Http::get("https://pokeapi.co/api/v2/pokemon?limit=10000");
-            return $response->json()['results'];
-        });
-        
+        $response = Http::get("https://pokeapi.co/api/v2/pokemon?limit=10000");
+        $pokemonLists = $response->json()['results'];
 
         $searchQuery = $request->input('search');
 

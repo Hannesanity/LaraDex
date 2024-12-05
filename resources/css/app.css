@@ -80,6 +80,10 @@ button {
     @apply shadow-md p-6 mb-4;
 }
 
+.page-list {
+    @apply hidden md:block;
+}
+
 .page-number {
     @apply border-2 p-2;
 }
@@ -95,6 +99,18 @@ button {
 
 .current-page {
     @apply my-4;
+}
+
+.pokemon-home {
+    @apply flex justify-center p-4;
+}
+
+.pokedex-title {
+    @apply flex flex-row items-center;
+}
+
+.pokeicon {
+    @apply w-12 h-12 pr-2;
 }
 
 .pokemon-slider {
@@ -120,7 +136,7 @@ button {
 }
 
 .main-name {
-    @apply sm:text-3xl xl:text-6xl font-bold;
+    @apply text-3xl xl:text-6xl font-bold;
 }
 
 .pokemon-detail {
@@ -137,7 +153,7 @@ button {
 }
 
 .profile-left {
-    @apply p-4 xl:pl-4;
+    @apply p-4 xl:pl-4 order-1;
 }
 
 .profile-left,
@@ -146,15 +162,19 @@ button {
 }
 
 .profile-right {
-    @apply p-4;
+    @apply p-4 order-3;
 }
 
 .profile-center {
-    @apply flex flex-col items-center border-2 m-4 rounded-full;
+    @apply flex justify-center  border-2 m-4 rounded-full xl:order-2;
+}
+
+.pokemon-image {
+    @apply content-center;
 }
 
 .pokemon-identity {
-    @apply grid lg:grid-cols-2 p-4 shadow-md sm:m-4;
+    @apply grid lg:grid-cols-2 p-4 shadow-md sm:m-4 lg:m-0;
 }
 
 .pokemon-stats {
@@ -162,7 +182,7 @@ button {
 }
 
 .stats-container {
-    @apply grid grid-cols-2 p-4 border-2 text-base;
+    @apply grid grid-cols-2 p-4 border-2 text-base xl:mr-4;
 }
 
 .pokemon-name {
@@ -182,15 +202,23 @@ button {
 }
 
 .evolution-contents {
-    @apply md:flex flex-row justify-between p-4 border-2;
+    @apply sm:flex flex-row justify-between p-4 border-2;
+}
+
+.evolution-item {
+    @apply flex flex-col items-center;
 }
 
 .evolution-image {
-    @apply sm:h-20 sm:w-20 lg:h-36 lg:w-36;
+    @apply h-36 w-36;
 }
 
 .arrow-container {
     @apply flex items-center;
+}
+
+.arrow {
+    @apply hidden sm:block;
 }
 
 .pokemon-moves {
@@ -207,6 +235,14 @@ button {
 
 .text-content {
     @apply sm:text-sm md:text-base;
+}
+
+.footer {
+    @apply bg-dark p-4 mt-4 text-white opacity-75 max-w-full;
+}
+
+.footer-text {
+    @apply text-xs text-center;
 }
 
 .normal {

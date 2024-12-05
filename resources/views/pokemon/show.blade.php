@@ -1,18 +1,20 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ ucfirst($pokeInfo['name']) }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
-    @vite('resources/css/app.css')
-</head>
-<body>
+@extends('layouts.layout')
+
+@section('title')
+    {{ ucfirst($pokeInfo['name']) }}
+@endsection
+
+
+@section('content')
     @php
         $mainType = $pokeInfo['types'][0]['type']['name']; 
     @endphp
+    <div class="pokemon-home">
+        <a href="/" class="pokedex-title">
+            <img src="{{ url('/images/pokeball.png') }}" alt="" class="pokeicon">
+            <p class="text-title">PokéDex</p>
+        </a>
+    </div>
     
     <div class="pokemon-slider">
         @if ( $previousPokemon !== null)
@@ -106,7 +108,7 @@
                 <h4 class="text-title ">Evolutions</h4>
                 <div class="evolution-contents {{ $mainType}}">
                 @foreach ($evolution_chain as $index => $evolution)
-                    <div class="evolution-item opacity-100">
+                    <div class="evolution-item">
                         <a href="/pokemon/{{ $evolution['id'] }}">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ $evolution['id'] }}.png" alt="{{ ucfirst($evolution['name']) }}" class="evolution-image">
                         </a>
@@ -135,6 +137,4 @@
         </div>
     </div>
         
-    
-</body>
-</html>
+@endsection
