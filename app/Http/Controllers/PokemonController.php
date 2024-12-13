@@ -244,4 +244,5 @@ class PokemonController extends Controller
             'pokeWeaknesses' => $pokeWeaknesses
         ]);
     }
+    
 }
