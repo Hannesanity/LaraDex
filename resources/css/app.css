@@ -44,12 +44,16 @@ button {
     @apply xl:flex justify-between m-2;
 }
 
-.sortBy {
+.filterBy {
     @apply self-center mx-4;
 }
 
-.pokeSearch {
-    @apply bg-transparent h-8;
+.pokeFilter {
+    @apply bg-transparent h-8 border-b;
+}
+
+select option {
+    @apply bg-transparent;
 }
 
 .search-form {
@@ -77,7 +81,7 @@ button {
 }
 
 .page-container {
-    @apply shadow-md p-6 mb-4;
+    @apply shadow-md p-6;
 }
 
 .page-list {
@@ -144,12 +148,12 @@ button {
 }
 
 .types-container {
-    @apply flex flex-wrap xl:gap-4 p-4 shadow-md;
+    @apply flex flex-wrap justify-evenly xl:gap-4 p-4 shadow-md;
 }
 
 .pokemon-profile,
 .pokemon-info {
-    @apply grid sm:grid-cols-1 xl:grid-cols-3 gap-4;
+    @apply grid grid-cols-1 xl:grid-cols-3 gap-4;
 }
 
 .profile-left {
@@ -174,7 +178,7 @@ button {
 }
 
 .pokemon-identity {
-    @apply grid lg:grid-cols-2 p-4 shadow-md sm:m-4 lg:m-0;
+    @apply grid lg:grid-cols-2 p-4 shadow-md;
 }
 
 .pokemon-stats {
@@ -182,7 +186,7 @@ button {
 }
 
 .stats-container {
-    @apply grid grid-cols-2 p-4 border-2 text-base xl:mr-4;
+    @apply grid grid-cols-2 p-4 border-2 items-center text-base xl:mr-4 h-9/10;
 }
 
 .pokemon-name {
@@ -202,7 +206,7 @@ button {
 }
 
 .evolution-contents {
-    @apply sm:flex flex-row justify-between p-4 border-2;
+    @apply sm:flex flex-wrap justify-between items-center p-4 border-2 xl:h-9/10;
 }
 
 .evolution-item {
@@ -238,7 +242,7 @@ button {
 }
 
 .footer {
-    @apply bg-dark p-4 mt-4 text-white opacity-75 max-w-full;
+    @apply bg-dark p-4 mt-8 text-white opacity-75 max-w-full;
 }
 
 .footer-text {

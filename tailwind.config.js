@@ -34,6 +34,9 @@ export default {
             black: '#000'
         },
         extend: {
+            height:{
+                '9/10': '90%',
+            },
             
             
             fontFamily: {

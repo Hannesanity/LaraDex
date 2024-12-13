@@ -12,11 +12,34 @@ class PokemonController extends Controller
 {
     
     public function index(Request $request) {
-        
         $response = Http::get("https://pokeapi.co/api/v2/pokemon?limit=10000");
         $pokemonLists = $response->json()['results'];
 
+
+        $filteredByType = $request->input('type');
+
+        if ($filteredByType && $filteredByType !== 'all') {
+            $typeResponse = Http::get("https://pokeapi.co/api/v2/type/$filteredByType");
+
+            $typeData = $typeResponse->json();
+
+            $pokemonListByType = $typeData['pokemon'];
+        
+            $pokemonDetails = [];
+            foreach ($pokemonListByType as $pokemon) {
+                $pokemonResponse = $pokemon['pokemon'];
+                $pokemonDetails[] = $pokemonResponse;
+            }
+        
+            $pokemonLists = $pokemonDetails;
+
+        }
+        
+
+
         $searchQuery = $request->input('search');
+
+        
 
         if ($searchQuery) {
             $filteredPokemon = array_filter(
@@ -73,17 +96,45 @@ class PokemonController extends Controller
             'pokemonDetails' => $pokemonDetails,
             'totalPages' => $totalPages,
             'currentPage' => $page,
-            'searchQuery' => $searchQuery
+            'searchQuery' => $searchQuery,
+            'filteredByType' => $filteredByType
         ]);
-
     }
 
     public function show($id) {
+        $normalizeName = function ($name) {
+            $forms = ['Mega', 'Gigantamax', 'Alola', 'Galar', 'Hisui', 'Regional', 'Gmax', 'Eternal', 'Totem', 'Crowned'];
+        
+            $name = ucwords(str_replace('-', ' ', $name));
+        
+            foreach ($forms as $form) {
+                if (stripos($name, $form) !== false) {
+                    $name = str_ireplace($form, '', $name);
+                    $name = $form . ' ' . trim($name);
+                    break;
+                }
+            }
+        
+            return $name;
+        };
+
+        $normalizeWord = function ($word) {
+            $word = ucwords(str_replace('-', ' ', $word));
+            return $word;
+        };
+
+
+        $getIdFromUrl = function($url) {
+            preg_match('/\/(\d+)\//', $url, $matches);
+            return isset($matches[1]) ? (int)$matches[1] : null;
+        };
+
+
         $response = Http::get('https://pokeapi.co/api/v2/pokemon/' . $id);
         $pokemonInfo = $response->json();
         $pokeInfo = [
             'id' => $pokemonInfo['id'],
-            'name' => $pokemonInfo['name'],
+            'name' => $normalizeWord($pokemonInfo['name']),
             'height' => $pokemonInfo['height'],
             'weight' => $pokemonInfo['weight'],
             'types' => $pokemonInfo['types'],
@@ -94,6 +145,8 @@ class PokemonController extends Controller
 
         $previousPokemon = null;
         $nextPokemon = null;
+
+        
 
         if ($id > 1) {
             $previousResponse = Http::get('https://pokeapi.co/api/v2/pokemon/' . ($id - 1));
@@ -151,30 +204,29 @@ class PokemonController extends Controller
 
         }
 
-
-        $getIdFromUrl = function($url) {
-            preg_match('/\/(\d+)\//', $url, $matches);
-            return isset($matches[1]) ? (int)$matches[1] : null;
-        };
+        
 
 
         $pokeEvolutions[] = [
-            'name' => $evolution_chain['chain']['species']['name'],
-            'id' => $getIdFromUrl($evolution_chain['chain']['species']['url'])
+            'name' => $normalizeWord($evolution_chain['chain']['species']['name']),
+            'id' => $getIdFromUrl($evolution_chain['chain']['species']['url']),
+            'evolve_method' => ''
         ];
 
         if (!empty($evolution_chain['chain']['evolves_to'])) {
             foreach ($evolution_chain['chain']['evolves_to'] as $firstEvolution) {
                $pokeEvolutions[] = [
-                'name' => $firstEvolution['species']['name'],
-                'id' => $getIdFromUrl($firstEvolution['species']['url'])
+                'name' => $normalizeWord($firstEvolution['species']['name']),
+                'id' => $getIdFromUrl($firstEvolution['species']['url']),
+                'evolve_method' => $normalizeWord($firstEvolution['evolution_details'][0]['trigger']['name']),
                ];
                
                if (!empty($firstEvolution['evolves_to'])) {
                    foreach ($firstEvolution['evolves_to'] as $secondEvolution) {
                        $pokeEvolutions[] = [
-                        'name' => $secondEvolution['species']['name'],
-                        'id' => $getIdFromUrl($secondEvolution['species']['url'])
+                        'name' => $normalizeWord($secondEvolution['species']['name']),
+                        'id' => $getIdFromUrl($secondEvolution['species']['url']),
+                        'evolve_method' => $normalizeWord($firstEvolution['evolution_details'][0]['trigger']['name']),
                        ];
                    }
                }

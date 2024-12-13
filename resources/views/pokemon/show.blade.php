@@ -114,6 +114,7 @@
                         </a>
                         <h4 class="text-content"># {{ $evolution['id'] }}</h4>
                         <h4 class="font-bold"> {{ ucfirst($evolution['name']) }}</h4>
+                        <h4 class="text-content"> {{ $evolution['evolve_method'] }}</h4>
                     </div>
                     @if ($index < count($evolution_chain) - 1)
                         <div class="arrow-container">
@@ -129,7 +130,7 @@
                     @foreach ($pokeInfo['stats'] as $pokeStats)
                         <div class="pokeStats">
                             <h4 class="text-title">{{ ucwords($pokeStats['name']) }}</h4>
-                            <h4>{{ ucfirst($pokeStats['base_stat']) }}</h4>
+                            <h4>{{ $pokeStats['base_stat'] }}</h4>
                         </div>
                     @endforeach
                 </div>
