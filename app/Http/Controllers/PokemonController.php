@@ -139,7 +139,7 @@ class PokemonController extends Controller
             'weight' => $pokemonInfo['weight'],
             'types' => $pokemonInfo['types'],
             'sprite' => $pokemonInfo['sprites']['other']['official-artwork']['front_default'],
-            'abilities' => $pokemonInfo['abilities'],
+            'abilities' => $normalizeWord($pokemonInfo['abilities']),
             'stats' => array_map(function($stat) { return [ 'base_stat' => $stat['base_stat'], 'name' => ucwords(str_replace('-', ' ', $stat['stat']['name'])) ]; }, $pokemonInfo['stats']),
         ];
 
