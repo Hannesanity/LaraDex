@@ -81,7 +81,7 @@
                         <div>
                             <h4 class="text-title ">Abilities</h4>                           
                             @foreach ($pokeInfo['abilities'] as $pokeAbility)
-                                <h4 class="text-content">{{ ucfirst($pokeAbility['ability']['name']) }} </h4>
+                                <h4 class="text-content">{{ ucwords(str_replace('-', ' ', $pokeAbility['ability']['name'])) }} </h4>
                             @endforeach                            
                         </div>
                     </div>
