@@ -1,0 +1,398 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --normal: #d1ccc0;
+    --fire: #fa6c5e;
+    --water: #4a90e2;
+    --electric: #fbd34d;
+    --grass: #78c850;
+    --ice: #87ceeb;
+    --fighting: #c05640;
+    --poison: #aa67cc;
+    --ground: #d1a054;
+    --flying: #a4b4e6;
+    --psychic: #fa92b2;
+    --bug: #a9b91f;
+    --rock: #c5b27b;
+    --ghost: #7d73cf;
+    --dragon: #5a5ce7;
+    --dark: #756a5b;
+    --steel: #b0b6c5;
+    --fairy: #f2a3d9;
+}
+body {
+    color: white;
+    background-image: url("../../public/images/background2.jpg");
+    background-attachment: fixed;
+}
+
+.pokedex {
+    @apply container mx-auto;
+}
+
+button {
+    @apply border p-2 my-4;
+}
+
+.pokemon-list {
+    @apply grid sm:grid-cols-2 xl:grid-cols-4 gap-4;
+}
+
+.filterAndSearch {
+    @apply xl:flex justify-between m-2;
+}
+
+.filterBy {
+    @apply self-center mx-4;
+}
+
+.pokeFilter {
+    @apply bg-transparent h-8 border-b;
+}
+
+select option {
+    @apply bg-transparent;
+}
+
+.search-form {
+    @apply mt-4 mx-4;
+}
+
+.pokeCards {
+    @apply row-auto m-4 shadow-lg hover:shadow-2xl;
+}
+
+.pokedex-pokemon {
+    @apply flex flex-col p-2 text-center;
+}
+
+.pokedex-image {
+    @apply flex items-center m-auto;
+}
+
+.index-types {
+    @apply py-4 flex flex-wrap justify-center m-auto;
+}
+
+.page {
+    @apply flex justify-center my-4;
+}
+
+.page-container {
+    @apply shadow-md p-6;
+}
+
+.page-list {
+    @apply hidden md:block;
+}
+
+.page-number {
+    @apply border-2 p-2;
+}
+
+.page-form {
+    @apply my-4;
+}
+
+.pageBox,
+.searchBox {
+    @apply w-64 bg-transparent px-4 py-2 text-white border-b placeholder-white;
+}
+
+.current-page {
+    @apply my-4;
+}
+
+.pokemon-home {
+    @apply flex justify-center p-4;
+}
+
+.pokedex-title {
+    @apply flex flex-row items-center;
+}
+
+.pokeicon {
+    @apply w-12 h-12 pr-2;
+}
+
+.pokemon-slider {
+    @apply justify-evenly flex flex-row py-4;
+}
+
+.slider-left,
+.slider-right {
+    @apply flex flex-row justify-evenly;
+}
+
+.slider-arrow {
+    @apply mx-8;
+}
+
+.slider-id,
+.slider-name {
+    @apply mx-4 text-xl hidden lg:block;
+}
+
+.main-id {
+    @apply sm:text-lg xl:text-xl;
+}
+
+.main-name {
+    @apply text-3xl xl:text-6xl font-bold;
+}
+
+.pokemon-detail {
+    @apply container mx-auto grid;
+}
+
+.types-container {
+    @apply flex flex-wrap justify-evenly xl:gap-4 p-4 shadow-md;
+}
+
+.pokemon-profile,
+.pokemon-info {
+    @apply grid grid-cols-1 xl:grid-cols-3 gap-4;
+}
+
+.profile-left {
+    @apply p-4 xl:pl-4 order-1;
+}
+
+.profile-left,
+.profile-right {
+    @apply content-center;
+}
+
+.profile-right {
+    @apply p-4 order-3;
+}
+
+.profile-center {
+    @apply flex justify-center  border-2 m-4 rounded-full xl:order-2;
+}
+
+.pokemon-image {
+    @apply content-center;
+}
+
+.pokemon-identity {
+    @apply grid lg:grid-cols-2 p-4 shadow-md;
+}
+
+.pokemon-stats {
+    @apply mb-2 xl:mb-0 pl-4;
+}
+
+.stats-container {
+    @apply grid grid-cols-2 p-4 border-2 items-center text-base xl:mr-4 h-9/10;
+}
+
+.pokemon-name {
+    @apply text-center;
+}
+
+.pokemon-type {
+    @apply rounded-full text-center px-2 py-1 font-bold mr-2 my-1 w-36;
+}
+
+.pokemon-table {
+    @apply table-auto gap-4;
+}
+
+.pokemon-evolutions {
+    @apply px-4 col-span-2;
+}
+
+.evolution-contents {
+    @apply sm:flex flex-wrap justify-between items-center p-4 border-2 xl:h-9/10;
+}
+
+.evolution-item {
+    @apply flex flex-col items-center;
+}
+
+.evolution-image {
+    @apply h-36 w-36;
+}
+
+.arrow-container {
+    @apply flex items-center;
+}
+
+.arrow {
+    @apply hidden sm:block;
+}
+
+.pokemon-moves {
+    @apply grid grid-cols-2;
+}
+
+.pokemon-table {
+    @apply table-fixed;
+}
+
+.text-title {
+    @apply xl:text-xl my-2 font-bold;
+}
+
+.text-content {
+    @apply sm:text-sm md:text-base;
+}
+
+.footer {
+    @apply bg-dark p-4 mt-8 text-white opacity-75 max-w-full;
+}
+
+.footer-text {
+    @apply text-xs text-center;
+}
+
+.normal {
+    @apply bg-normal;
+}
+
+.fire {
+    @apply bg-fire;
+}
+
+.water {
+    @apply bg-water;
+}
+
+.electric {
+    @apply bg-electric;
+}
+
+.grass {
+    @apply bg-grass;
+}
+
+.ice {
+    @apply bg-ice;
+}
+
+.fighting {
+    @apply bg-fighting;
+}
+
+.poison {
+    @apply bg-poison;
+}
+
+.ground {
+    @apply bg-ground;
+}
+
+.flying {
+    @apply bg-flying;
+}
+
+.psychic {
+    @apply bg-psychic;
+}
+
+.bug {
+    @apply bg-bug;
+}
+
+.rock {
+    @apply bg-rock;
+}
+
+.ghost {
+    @apply bg-ghost;
+}
+
+.dragon {
+    @apply bg-dragon;
+}
+
+.dark {
+    @apply bg-dark;
+}
+
+.steel {
+    @apply bg-steel;
+}
+
+.fairy {
+    @apply bg-fairy;
+}
+
+.background {
+    background-size: cover;
+}
+
+.background-normal {
+    background-image: url("../../public/images/normal.png");
+}
+
+.background-fire {
+    background-image: url("../../public/images/fire.png");
+}
+
+.background-water {
+    background-image: url("../../public/images/water.png");
+}
+
+.background-electric {
+    background-image: url("../../public/images/electric.png");
+}
+
+.background-grass {
+    background-image: url("../../public/images/grass.png");
+}
+
+.background-ice {
+    background-image: url("../../public/images/ice.png");
+}
+
+.background-fighting {
+    background-image: url("../../public/images/fighting.png");
+}
+
+.background-poison {
+    background-image: url("../../public/images/poison.png");
+}
+
+.background-ground {
+    background-image: url("../../public/images/ground.png");
+}
+
+.background-flying {
+    background-image: url("../../public/images/flying.png");
+}
+
+.background-psychic {
+    background-image: url("../../public/images/psychic.png");
+}
+
+.background-bug {
+    background-image: url("../../public/images/bug.png");
+}
+
+.background-rock {
+    background-image: url("../../public/images/rock.png");
+}
+
+.background-ghost {
+    background-image: url("../../public/images/ghost.png");
+}
+
+.background-dragon {
+    background-image: url("../../public/images/dragon.png");
+}
+
+.background-dark {
+    background-image: url("../../public/images/dark.png");
+}
+
+.background-steel {
+    background-image: url("../../public/images/steel.png");
+}
+
+.background-fairy {
+    background-image: url("../../public/images/fairy.png");
+}
